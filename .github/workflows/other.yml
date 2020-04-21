@@ -23,7 +23,7 @@ jobs:
     needs: job1
     steps:
       - run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}
-  multienv:
+  job3:
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-18.04]
@@ -32,12 +32,11 @@ jobs:
           # excludes node 4 on macOS
           - os: macos-latest
             node: 4
-      # The maximum number of jobs that can run simultaneously when using a matrix job strategy. 
+      # The maximum number of jobs that can run simultaneously when using a matrix job strategy.
       max-parallel: 2
     runs-on: ${{ matrix.os }}
-      steps:
-        - id: step11
-          run: echo "::set-output name=test::hello"
-        - id: step12
-          run: echo "::set-output name=test::world"
-  
+    steps:
+      - name: step11
+        run: echo "A"
+      - name: step12
+        run: echo "B"
