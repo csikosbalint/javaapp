@@ -24,10 +24,6 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_MYTOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_PIPETOKEN }}
-      - name: Check vulnerabilities
-        uses: pedrolacerda/pr-with-vulnerable-dependencies@master
-        with:
-          GITHUB_TOKEN: ${{ secrets.GH_PIPETOKEN }}
   jobA:
     runs-on: ubuntu-latest
     steps:
