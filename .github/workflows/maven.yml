@@ -23,7 +23,22 @@ jobs:
         run: mvn -B package sonar:sonar --file pom.xml -Dsonar.host.url="${{ secrets.SONAR_URL }}" -Dsonar.organization="${{ secrets.SONAR_ORGKEY }}"
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_MYTOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PIPETOKEN }}
       - name: Check vulnerabilities
         uses: pedrolacerda/pr-with-vulnerable-dependencies@master
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PIPETOKEN }}
+  jobA:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step11
+        run: echo "A"
+      - name: step12
+        run: echo "B"
+  jobB:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step11
+        run: echo "A"
+      - name: step12
+        run: echo "B"
